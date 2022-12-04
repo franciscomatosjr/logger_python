@@ -1,13 +1,23 @@
 import logging
 import os
 
-log_nome = os.environ['NAMEDCLASS']
+"""
+    Author: Francisco Matos 
+    githut: https://github.com/franciscomatosjr/logger_python.git
+"""
+
+try:
+    log_nome = os.environ['NAMEDCLASS']
+except:
+    log_nome = __name__
+
 
 logger = logging.getLogger(log_nome)
 
 if 'LOGGER_LEVEL' in os.environ:
+
     LOGGER_LEVEL = os.environ['LOGGER_LEVEL']
-    print(f'LOGGER_LEVEL: {LOGGER_LEVEL}')
+
     if LOGGER_LEVEL == 'ERROR':
         logger.setLevel(logging.ERROR)
     elif LOGGER_LEVEL == 'DEBUG':
